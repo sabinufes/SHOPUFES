@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header " />
+
+<body>
+
+
+	<!-- Static navbar -->
+
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+
+		<div> class="row" style="margin-bottom: -100px;"
+
+
+			<div class="col-8">
+				<h2 class="section headline">
+					<h2 class="section-headline">
+						<span th:text="${#strings.toUpperCase(user.username)}"> </span>
+					</h2>
+
+				</h2>
+			</div>
+			<div class="col-4">
+				<img src=/image/logo2.png class="img-fluid">
+			</div>
+
+		</div>
+		<hr
+			style="position: absolute; width: 100%; height: 4px; background-color: #333; z-index: -1; margin-top: -80px;">
+
+		<img src="/image/banner3.jpg" class="img-fluid" alt="Responsive image"
+			style="margin: -75px; margin-left: auto; margin-right: auto; width: 100%">
+
+	</div>
+
+
+	<div class="row" style="margin: 60px;">
+		<div class="col-6 col-offset-5">
+
+
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs">
+				<li th:classappend="${classActiveEdit}? 'active'" class="nav-item"><a
+					class="nav-link" href="#tab-1" data-toggle="tab"><span
+						style="color: red;">Edit</span></a></li>
+				<li th:classappend="${classActiveOrders}? 'active'" class="nav-item"><a
+					class="nav-link active" href="#tab-2" data-toggle="tab"><span
+						style="color: red;">Orders</span></a></li>
+				<li th:classappend="${classActiveBilling}? 'active'"
+					class="mav-item"><a class="nav-link" href="#tab-3"
+					data-toggle="tab"><span style="color: red;">Billing</span></a></li>
+				<li th:classappend="${classActiveForgetShipping}? 'active'"
+					class="mav-item"><a class="nav-link" href="#tab-4"
+					data-toggle="tab"><span style="color: red;">Shipping</span></a></li>
+
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+
+				<!--  EDIT USER INFORMATION -->
+				<div class="tab-pane fade show active" id="tab-1"
+					th:classappend="${classActiveEdit}? 'in active'">
+					<div class="panel-group">
+						<div class="panel panel-default" style="border: none;">
+
+							<div class="panel-body"
+								style="background-color: #ededed; margin-top: 20px;">
+								<form th:action="@{/updateUserInfo}" method="post">
+
+									<input type="hidden" name="id" th:value="${user.id}" />
+									<div class="bg-info" th:if="${updateUserInfo}">User info
+										updated.</div>
+
+									<div class="form-gorup">
+										<div class="row">
+											<div class="col-6">
+												<label for="firstName">First Name</label> <input type="text"
+													class="form-control" id="firstName" name="firstName"
+													th:value="${user.firstName}" />
+
+											</div>
+											<div class="col-6">
+												<label for="lastName">Last Name</label> <input type="text"
+													class="form-control" id="lastName" name="lastName"
+													th:value="${user.lastName}" />
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group">
+
+										<label for="userName">Username</label> <input type="text"
+											class="form-control" id="userName" name="username"
+											th:value="${user.username}" />
+
+
+									</div>
+									<div class="form-group">
+
+										<label for="currentPassword">Current Password</label> ' 
+										<input
+											type="password" class="form-control" id="currentPassword"
+											name="currentPassword" th:value="${currentPassword}" />
+
+									</div>
+									<p style="color: #828282">Enter your current password to
+										change the email address or password.</p>
+
+									<div class="form-group">
+
+										<label for="email"> Email address</label> ' <input type="text"
+											class="form-control" id="email" name="email"
+											th:value="${user.email}" />
+
+									</div>
+									<p style="color: #828282">Enter the valid email.</p>
+
+
+									<div class="form-group">
+
+										<label for="txtNewPassword">New password</label> <input
+											type="password" class="form-control" id="txtNewPassword"
+											name="newPassword" />
+
+									</div>
+
+									<div class="form-group">
+
+										<label for="txtConfirmPassword">New password</label> <input
+											type="password" class="form-control" id="txtConfirmPassword" />
+										<p style="color: #828282">To change the current user
+											password, enter the new password in both fields.</p>
+
+									</div>
+									<button type="submit" class btn btn-primary>Edit your
+										account</button>
+
+
+
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</body>
+
+
+<!-- end of container -->
+
+
+
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</html>
